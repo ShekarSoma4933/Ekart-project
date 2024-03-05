@@ -101,6 +101,17 @@ $ java -jar target/shopping-cart-0.0.1-SNAPSHOT.jar
 
 To exit the application, press **ctrl-c**.
 
+
+Trivy Scanner
+
+sudo apt-get install get apt-transport-https gnupg lsb-release
+wget -q0 - https://aquasecurity.github.io/trivy-repo/deb/public.key gpg --dearmor sudo tee /usr/share/keyrings/trivy.gpg ›
+/dev/null
+echo "deb [signed-by=/us/share/keyrings/trivy-gpg] https://aquasecurity-github.io/trivy-repo/deb $(1sb_release tee -a /etc/apt/sources. list.d/trivy.list
+-sc) main"
+sudo apt-get update
+sudo apt-get install trivy -y
+
 ### Docker
 
 It is possible to run **shopping-cart** using Docker:
