@@ -87,13 +87,18 @@ pipeline {
         }
       stage("Push the manifest changes to EkartArgocd repo"){
         steps{
-          sh '''
-          git config --global user.name "shekarsoma4933"
-          git config --global user.mail "shekarsoma4933@gmail.com"
-          git add deployment-ekart.yaml
-          git commit -m "Update deployment manifest file"
-          '''
-          sh "git push https://github.com/ShekarSoma4933/Ekart-argocd main"
+          script{
+              withCredentials([usernamePassword(credentialsId: 'git-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]){
+                  sh '''
+                      git config --global user.name "shekarsoma4933"
+                      git config --global user.mail "shekarsoma4933@gmail.com"
+                      git remote set-url origin https://${USER}:${PASS}@github.com/ShekarSoma4933/Ekart-argocd.git
+                      git add .
+                      git commit -m "Update deployment manifest file"
+                      git push origin HEAD:jenkins-jobs
+                    '''
+              }
+          }
         }
       }
     }
