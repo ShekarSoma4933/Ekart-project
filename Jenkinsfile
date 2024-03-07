@@ -83,7 +83,7 @@ pipeline {
         steps{
           script{
                 sh "cat deployment-ekart.yaml"
-                sh "sed -i 's/ekart.*/ekart:"${BUILD_NUMBER}"/g' deployment-ekart.yaml"
+                sh "sed -i 's/ekart.*/ekart:${BUILD_NUMBER}/g' deployment-ekart.yaml"
                 }
             }
         }
