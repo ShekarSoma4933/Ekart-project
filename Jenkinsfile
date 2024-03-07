@@ -81,8 +81,10 @@ pipeline {
         }
       stage("Update Manifest file"){
         steps{
-            sh "cat deployment-ekart.yaml"
-            sh "sed -i 's/ekart.*/ekart:"${BUILD_NUMBER}"/g' deployment-ekart.yaml"
+          script{
+                sh "cat deployment-ekart.yaml"
+                sh "sed -i 's/ekart.*/ekart:"${BUILD_NUMBER}"/g' deployment-ekart.yaml"
+                }
             }
         }
       stage("Push the manifest changes to EkartArgocd repo"){
