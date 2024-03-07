@@ -74,7 +74,7 @@ pipeline {
           cleanWs()
         }
       }
-      stage('Git CheckOut') {
+      stage('Git CheckOut Ekart-argocd') {
             steps {
                git branch: 'main', url: 'https://github.com/ShekarSoma4933/Ekart-argocd.git'
             }
