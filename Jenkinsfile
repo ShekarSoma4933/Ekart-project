@@ -95,7 +95,7 @@ pipeline {
                       git remote set-url origin https://${USER}:${PASS}@github.com/ShekarSoma4933/Ekart-argocd.git
                       git add .
                       git commit -m "Update deployment manifest file"
-                      git push origin HEAD:jenkins-jobs
+                      git push origin main
                     '''
               }
           }
